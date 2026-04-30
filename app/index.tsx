@@ -98,7 +98,7 @@ export default function Home() {
                  }}>Go To Profile</Button>
                  </View>
                  <View>
-                    {users?.map((user:User, i)=> {
+                    {users?.map((user:User, i) => {
                         return (
 
                  <View style={{ borderColor: 'red', padding: 10, margin: 10}}
