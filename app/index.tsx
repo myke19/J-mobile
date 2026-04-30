@@ -1,23 +1,56 @@
-import { MyContext } from "@/context/AuthContext";
-import useStore from "@/store/useStore";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button } from "@react-navigation/elements";
 import { useRouter } from "expo-router";
-import { useContext } from "react";
+import { useSQLiteContext } from 'expo-sqlite';
+import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
+
 export default function Home() {
+      const db = useSQLiteContext();
+
     const navigator = useRouter();
 
-    const { user, setUser } = useContext(MyContext);
+    interface User {
+        name: string;
+        email: string;
+        age: number;
+    }
+    
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [age, setAge] = useState(0);
+    const [users, setUsers] = useState<User[]>([]);
 
-    const user = useStore((state: any) => 
-    state.user)
+    const updateDb = async () => {
+        await db.runAsync(
+        "INSERT INTO users (name, email, age ) VALUES (?, ?, ?)", 
+        name, email, age
+        );
+         const result = await db.getAllAsync<User>("SELECT * FROM users");
+         setUsers(result);
+        setName("");
+        setEmail("");
+        setAge(0);
+    } 
 
-    const setUser = useStore((state: any) => 
-    state.setUser)
+    useEffect( () => {
+        const fetchData = async () =>{
+            const result = await db.getAllAsync<User>("SELECT * FROM users");
+         setUsers(result);
+            
+    const initialName = await AsyncStorage.getItem("name");
+    const initialEmail =await AsyncStorage.getItem("email");
+    const initialAge =await AsyncStorage.getItem("age");
+    if (initialName) setName(initialName);
+    if (initialEmail) setEmail(initialEmail);
+    if (initialAge) setAge(Number(initialAge));
+        }
+        fetchData();
+    }, []);
 
     const handleLogin = () => {
-        if ( user.name === "game") {
+        if ( name === "game") {
             alert("welcome, game!");
         } else {
          navigator.push("/profile"); 
@@ -26,31 +59,56 @@ export default function Home() {
 
     return (
         <ScrollView style={{ backgroundColor: "#fff", flex: 1, padding: 16}}>
+            <View>
             <View style={styles.inputContainer}>
                 <Text style={styles.label}>Name:</Text>
-                <TextInput value={user.name} onChangeText={(value) => 
-                setUser({ ...user, name: value})} 
+                <TextInput value={name} 
+                onChangeText={(value) => {
+                setName(value);
+                AsyncStorage.setItem("name", value);
+                }}
                 style={styles.input} 
                 />
                 </View>
 
                 <View style={styles.inputContainer}>
                 <Text style={styles.label}>Email:</Text>
-                <TextInput value={user.email} onChangeText={(value) => 
-                setUser({...user, email: value})} 
+                <TextInput value={email} 
+                onChangeText={(value) => {
+                setEmail(value);
+                AsyncStorage.setItem("email", value);
+                }}
                 style={styles.input}
                  />
                  </View>
 
                 <View style={styles.inputContainer}>
                 <Text style={styles.label}>Age:</Text>
-                <TextInput value={user.age.toLocaleString()} onChangeText={(value) => 
-                setUser({...user, age: Number(value) })} 
+                <TextInput value={age.toLocaleString()} 
+                onChangeText={(value) => {
+                setAge(Number(age));
+                AsyncStorage.setItem("age", value);
+                }}
                 style={styles.input}
                  />
+                 </View>
                  
-                 <Button onPressIn={() => (handleLogin)}>
-                     Go To Profile</Button>
+                 <Button onPressIn={() =>{ 
+                   updateDb();
+                 }}>Go To Profile</Button>
+                 </View>
+                 <View>
+                    {users?.map((user:User, i)=> {
+                        return (
+
+                 <View style={{ borderColor: 'red', padding: 10, margin: 10}}
+                             key={i}>
+                                <Text>Name: {user.name}</Text>
+                                <Text>Email: {user.email}</Text>
+                                <Text>Age: {user.age}</Text>
+                                    </View>
+                        )}
+                        )}
                  </View>
         </ScrollView>
     );
