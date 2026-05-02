@@ -1,13 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button } from "@react-navigation/elements";
 import { useRouter } from "expo-router";
-import { useSQLiteContext } from 'expo-sqlite';
-import { useEffect, useState } from "react";
+//import { useSQLiteContext } from 'expo-sqlite';
+import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 
 export default function Home() {
-      const db = useSQLiteContext();
+     // const db = useSQLiteContext();
 
     const navigator = useRouter();
 
@@ -22,32 +22,32 @@ export default function Home() {
     const [age, setAge] = useState(0);
     const [users, setUsers] = useState<User[]>([]);
 
-    const updateDb = async () => {
-        await db.runAsync(
-        "INSERT INTO users (name, email, age ) VALUES (?, ?, ?)", 
-        name, email, age
-        );
-         const result = await db.getAllAsync<User>("SELECT * FROM users");
-         setUsers(result);
-        setName("");
-        setEmail("");
-        setAge(0);
-    } 
+    //const updateDb = async () => {
+      // await db.runAsync(
+      // "INSERT INTO users (name, email, age ) VALUES (?, ?, ?)", 
+       // name, email, age
+      //);
+        //const result = await db.getAllAsync<User>("SELECT * FROM users");
+       //setUsers(result);
+       // setName("");
+        //setEmail("");
+        //setAge(0);
+   // }; 
 
-    useEffect( () => {
-        const fetchData = async () =>{
-            const result = await db.getAllAsync<User>("SELECT * FROM users");
-         setUsers(result);
+    //useEffect( () => {
+     //   const fetchData = async () =>{
+            //const result = await db.getAllAsync<User>("SELECT * FROM users");
+        //setUsers(result);
             
-    const initialName = await AsyncStorage.getItem("name");
-    const initialEmail =await AsyncStorage.getItem("email");
-    const initialAge =await AsyncStorage.getItem("age");
-    if (initialName) setName(initialName);
-    if (initialEmail) setEmail(initialEmail);
-    if (initialAge) setAge(Number(initialAge));
-        }
-        fetchData();
-    }, []);
+   // const initialName = await AsyncStorage.getItem("name");
+   // const initialEmail =await AsyncStorage.getItem("email");
+    //const initialAge =await AsyncStorage.getItem("age");
+    //if (initialName) setName(initialName);
+    //if (initialEmail) setEmail(initialEmail);
+    //if (initialAge) setAge(Number(initialAge));
+     //   }
+       // fetchData();
+   // }, []);
 
     const handleLogin = () => {
         if ( name === "game") {
@@ -94,7 +94,7 @@ export default function Home() {
                  </View>
                  
                  <Button onPressIn={() =>{ 
-                   updateDb();
+                 //  updateDb();
                  }}>Go To Profile</Button>
                  </View>
                  <View>

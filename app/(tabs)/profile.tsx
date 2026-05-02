@@ -1,4 +1,4 @@
-import { fetchPosts } from "@/api/api-client";
+import { fetchPostsData } from "@/api/axios-client";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,7 +8,7 @@ export default function Profile() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await fetchPosts();
+            const data = await fetchPostsData();
             setPosts(data);
         };
         fetchData();
