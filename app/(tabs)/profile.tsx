@@ -1,38 +1,29 @@
 import { fetchPostsData } from "@/api/axios-client";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, ScrollView, SectionList, StatusBar, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Profile() {
-    const [posts, setPosts] = useState([]);
+  const [rawData, setRawData] = useState<any>();
+    const [posts, setPosts] = useState<any>([]);
+    const [page, setPage] = useState(1);
+
+    const fetchMoreData = async () => {
+      const skip = page * 30;
+      const data = await fetchPostsData(skip);
+      setPage((prev) => prev + 1);
+      setRawData(data);
+      setPosts((prev:any) => [...prev, ...data?.posts]);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await fetchPostsData();
-            setPosts(data);
+            const data = await fetchPostsData(0);
+            setRawData(data);
+            setPosts(data?.posts);
         };
         fetchData();
     }, []);
-
-    const DATA = [
-  {
-    title: 'Main dishes',
-    data: ['Pizza', 'Burger', 'Risotto'],
-  },
-  {
-    title: 'Sides',
-    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
-  },
-  {
-    title: 'Drinks',
-    data: ['Water', 'Coke', 'Beer'],
-  },
-  {
-    title: 'Desserts',
-    data: ['Cheese Cake', 'Ice Cream'],
-  },
-];
-
 
     return (
         <SafeAreaView style={{ backgroundColor: "#fff", flex: 1}}>
@@ -41,7 +32,7 @@ export default function Profile() {
                 <Text>Welcome To The Tabs Profile Page</Text>
                 <Text></Text>
             </View>
-           <SectionList
+         {/*}  <SectionList
         sections={DATA}
         keyExtractor={(item, index) => item + index}
         renderItem={({item}) => (
@@ -52,22 +43,24 @@ export default function Profile() {
         renderSectionHeader={({section: {title}}) => (
           <Text style={styles.header}>{title}</Text>
         )}
-      />
+      />*/}
             <View>
                 {posts.length === 0 ? ( 
                     <ActivityIndicator/> 
                 ) : (
                         
                  <View>
-                    <FlatList
-        numColumns={2}
-      data={posts}
+          <FlatList
+            onEndReachedThreshold={0.5}
+            onEndReached={fetchMoreData}
+            numColumns={2}
+            data={posts}
       keyExtractor={( item, i) => i.toString()}
       renderItem={({ item }: any) => (
         <View style={{padding: 20, maxWidth: "50%"}}>
+          <Text>Id:{item?.id}</Text>
             <Text>Title: {item?.title}</Text>
             <Text>Body:{item?.body}</Text>
-            <Text>Id:{item?.id}</Text>
             </View>
       )}
     />
@@ -91,7 +84,7 @@ export default function Profile() {
     );
 }
 
-const styles = StyleSheet.create({
+{/*const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
@@ -109,4 +102,4 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
   },
-});
+});*/}

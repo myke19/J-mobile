@@ -1,7 +1,8 @@
 import axios from "axios";
 
 
-const baseUrl = "https://jsonplaceholder.typicode.com";
+//const baseUrl = "https://jsonplaceholder.typicode.com";
+const baseUrl = "https://dummyjson.com";
 
 const axiosClient = axios.create({
     baseURL: baseUrl, //"https://api.example.com",
@@ -11,9 +12,9 @@ const axiosClient = axios.create({
     },
 });
 
-export const fetchPostsData = async () => {
+export const fetchPostsData = async (skip:number) => {
     try {
-        const response = await axiosClient.get("/posts");
+        const response = await axiosClient.get(`/posts?limit=30&skip=${skip}`);
         console.log(response.data);
         return response.data;
     } catch (error) {
