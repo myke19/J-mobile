@@ -1,7 +1,7 @@
 
 
 
-const baseUrl = "https://jsonplaceholder.typicode.com";
+{/*const baseUrl = "https://jsonplaceholder.typicode.com";
 
  export const fetchPosts = async () => {
    // try {
@@ -14,5 +14,5 @@ const baseUrl = "https://jsonplaceholder.typicode.com";
     //console.error("Network error:", error);
  //  throw error;
  //}   
-};
+};*/}
 

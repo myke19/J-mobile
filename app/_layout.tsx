@@ -1,10 +1,10 @@
 import { MyProvider } from '@/context/AuthContext';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router/react-navigation';
+
 import { Stack } from 'expo-router';
 //import { SQLiteProvider, type SQLiteDatabase } from 'expo-sqlite';
 import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
 
 
 export const unstable_settings = {
@@ -21,6 +21,18 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+        <Stack.Screen
+                name="index" 
+        options={{ headerShown: true }} />
+
+        <Stack.Screen
+                name="auth/goals" 
+        options={{ headerShown: false }} />
+
+        
+        <Stack.Screen
+                name="auth/balance" 
+        options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto"/>
     </ThemeProvider>

@@ -1,8 +1,7 @@
-import axios from "axios";
 
 
 //const baseUrl = "https://jsonplaceholder.typicode.com";
-const baseUrl = "https://dummyjson.com";
+{/*const baseUrl = "https://dummyjson.com";
 
 const axiosClient = axios.create({
     baseURL: baseUrl, //"https://api.example.com",
@@ -33,4 +32,4 @@ const postData = async (userData: any) => {
 
 const userData = { name: "John Doe", email: "john.doe@example.com" };
 
-postData(userData);
+postData(userData);*/}
