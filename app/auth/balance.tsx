@@ -29,7 +29,10 @@ export default function Balance() {
                 </View>
 
                 <View style={styles.leav}>
-                    <Ionicons name='chevron-back' size={24} color={'black'}/>
+                    <TouchableOpacity
+           onPress={() => navigation.navigate("/(tabs)/leave")}>
+            <Text style={{fontSize:15}}><Ionicons name='chevron-back' size={24} color={'black'}/></Text>
+           </TouchableOpacity>
                     <Image source={require('@/assets/images/Hrflow1.jpeg')}
                      style={{width: 100, height: 30,marginRight: 180}}
                      />

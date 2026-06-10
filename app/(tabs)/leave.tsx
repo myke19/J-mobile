@@ -69,7 +69,7 @@ export default function LeaveScreen() {
                         <small style={{color: 'green'}}>Approved</small>
                     </View>
                     <View style={styles.saul}>
-                        <Ionicons name='calendar' size={20} color={'green'} style={{padding: 3, backgroundColor: 'lightgreen'}}/>
+                        <Ionicons name='calendar' size={20} color={'red'} style={{padding: 3, backgroundColor: 'lightpink'}}/>
                         <Text style={{marginRight: 215}}>Annual Leave<br></br>
                         01 Apr- 04 Apr 2026<br></br>
                         3 days</Text>

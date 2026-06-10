@@ -1,7 +1,7 @@
 import styles from "@/styles/tablestyle";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
@@ -16,6 +16,10 @@ export default function Reviews() {
 
     const Request = () => {
         navigation.push("/auth/balance")
+    }
+
+    const Back = () => {
+        navigation.push("/auth/goals")
     }
 
 
@@ -39,7 +43,10 @@ export default function Reviews() {
 
                 <View style={styles.feedback}>
                         <View style={styles.all}>
-                            <Ionicons name='chevron-back' size={25} color={'blue'}/>
+                            <TouchableOpacity
+                                       onPress={() => navigation.navigate("/auth/goals")}>
+                                        <Text><Ionicons name='chevron-back' size={24} color={'blue'}/></Text>
+                                       </TouchableOpacity>
                             <Text style={{fontWeight: 'bold'}}>Feedback</Text>
                         </View>
 

@@ -33,6 +33,36 @@ export default function RootLayout() {
         <Stack.Screen
                 name="auth/balance" 
         options={{ headerShown: false }} />
+
+        
+        <Stack.Screen
+                name="auth/checkin" 
+        options={{ headerShown: false }} />
+
+        
+        <Stack.Screen
+                name="auth/checked" 
+        options={{ headerShown: false }} />
+
+        
+        <Stack.Screen
+                name="auth/checkout" 
+        options={{ headerShown: false }} />
+
+        
+        <Stack.Screen
+                name="auth/request" 
+        options={{ headerShown: false }} />
+
+        
+        <Stack.Screen
+                name="auth/reviews" 
+        options={{ headerShown: false }} />
+
+        
+        <Stack.Screen
+                name="auth/feedback" 
+        options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto"/>
     </ThemeProvider>

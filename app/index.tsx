@@ -17,7 +17,7 @@ export default function Home() {
             <View style={{flex: 1}}>
                 <View style={styles.ground}>
                     
-                <Text style={{fontWeight: 'bold', color: '#fff'}}>Welcome</Text>
+                <Text style={{fontWeight: 'bold', color: '#fff'}}>Welcome!</Text>
                 <Text style={{color: '#fff'}}>Please, click on the above arrow<MaterialCommunityIcons name='hand-wave' size={25} color={'orange'}/></Text>
             </View>
             </View>

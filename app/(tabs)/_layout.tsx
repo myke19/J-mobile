@@ -9,10 +9,10 @@ export default function TabLayout()  {
     <Tabs.Screen 
     name="dashboard"
     options={{
-      title: "Dashboard",
+      title: "Home",
       headerShown: false,
       tabBarIcon: ({ color }) => (
-        <Ionicons name="home" size={28}  color={color} />
+        <Ionicons name="home" size={20}  color={color} />
       ),
     }}
       />
@@ -22,7 +22,7 @@ export default function TabLayout()  {
         title: "Attendance",
         headerShown: false,
           tabBarIcon: ({ color }) => (
-          <Ionicons name="book" size={28} color={color} />
+          <Ionicons name="book" size={20} color={color} />
         ),  
       }}
       />
@@ -32,7 +32,7 @@ export default function TabLayout()  {
       title: "Leave",
       headerShown: false,
       tabBarIcon: ({ color }) => (
-        <Ionicons name="calendar" size={28}  color={color} />
+        <Ionicons name="calendar" size={20}  color={color} />
       ),
     }}
     />
@@ -42,7 +42,7 @@ export default function TabLayout()  {
       title: "Performance",
       headerShown: false,
       tabBarIcon: ({ color }) => (
-        <Ionicons name="bar-chart" size={28}  color={color} />
+        <Ionicons name="bar-chart" size={20}  color={color} />
       ),
     }}
     />
@@ -52,7 +52,7 @@ export default function TabLayout()  {
       title: "Profile",
       headerShown: false,
       tabBarIcon: ({ color }) => (
-        <Ionicons name="person" size={28}  color={color} />
+        <Ionicons name="person" size={20}  color={color} />
       ),
     }}
     />

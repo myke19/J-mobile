@@ -1,13 +1,17 @@
 import styles from "@/styles/main";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
 
 export default function Checkout() {
-    const navigator = useRouter();
+    const navigation = useRouter();
+
+    const Back = () => {
+        navigation.push("/(tabs)/flash")
+    }
 
     return (
         <SafeAreaView style={{ backgroundColor: "#fff", flex: 1}}>
@@ -56,7 +60,11 @@ export default function Checkout() {
                     </View>
                     <View style={styles.chek}>
                         <View style={styles.box}>
-                        <Text style={{color: '#fff'}}>Check-Out</Text>
+                            <TouchableOpacity
+                                       onPress={() => navigation.navigate("/(tabs)/flash")}
+                                       style={{ alignSelf: "center", marginTop: 5, padding: 5, paddingLeft: 50, paddingRight: 50, borderRadius: 8, backgroundColor: 'blue'}}>
+                                        <Text style={{ color: '#fff'}}>Check-Out</Text>
+                                       </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.bar}>

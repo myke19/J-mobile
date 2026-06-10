@@ -36,7 +36,10 @@ export default function Checkin() {
                 </View>
 
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 180, marginLeft: 15, marginTop: 15}}>
-                    <Ionicons name='chevron-back' size={25}/>
+                    <TouchableOpacity
+           onPress={() => navigation.navigate("/(tabs)/flash")}>
+            <Text style={{fontSize:15}}><Ionicons name='chevron-back' size={24} color={'black'}/></Text>
+           </TouchableOpacity>
                     <View>
                     <Image source={require('@/assets/images/Hrflow1.jpeg')}
                     style={{width: 100, height:30}}/>

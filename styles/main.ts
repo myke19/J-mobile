@@ -182,6 +182,7 @@ const styles = StyleSheet.create(
         box: {
             padding: 16,
             borderRadius: 8,
+            marginTop: 10,
             backgroundColor: 'blue',
             paddingLeft: 100,
             paddingRight: 100,
@@ -405,7 +406,6 @@ const styles = StyleSheet.create(
         },
         ground : {
             flex: 1,
-            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
         },

@@ -28,7 +28,10 @@ export default function Attendance() {
                 </View>
 
                 <View style={styles.tea}>
-                    <Ionicons name='chevron-back' size={24} color={'black'}/>
+                    <TouchableOpacity
+           onPress={() => navigation.navigate("/(tabs)/dashboard")}>
+            <Text style={{fontSize:15}}><Ionicons name='chevron-back' size={24} color={'black'}/></Text>
+           </TouchableOpacity>
                     <Image source={require('@/assets/images/Hrflow1.jpeg')}
                     style={{width: 100, height: 30,}}/>
                     <Ionicons name='calendar-outline' size={24} color={'blue'}/>

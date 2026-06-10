@@ -20,6 +20,10 @@ export default function Request() {
     navigation.push("/auth/checked")
   }
 
+  const Request = () => {
+    navigation.push("/(tabs)/leave")
+  }
+
 
 
     return (
@@ -35,7 +39,10 @@ export default function Request() {
                 </View>
 
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', marginRight: 180, marginLeft: 15, marginTop: 15}}>
-                    <Ionicons name='chevron-back' size={25}/>
+                    <TouchableOpacity
+                         onPress={() => navigation.navigate("/(tabs)/leave")}>
+                        <Text><Ionicons name='chevron-back' size={25}/></Text>
+                        </TouchableOpacity>
                     <View style={{backgroundColor: 'blue'}}>
                     <Image source={require('@/assets/images/Hrflow1.jpeg')}
                     style={{width: 100, height:30}}/>

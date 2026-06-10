@@ -1,7 +1,7 @@
 import styles from "@/styles/main";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
@@ -16,6 +16,10 @@ export default function Reviews() {
 
     const Request = () => {
         navigation.push("/auth/balance")
+    }
+
+    const Rev = () => {
+        navigation.push("/(tabs)/performance")
     }
 
 
@@ -33,7 +37,10 @@ export default function Reviews() {
                 </View>
 
                 <View style={styles.sac}>
-                    <Ionicons name='chevron-back' size={25} color={'blue'}/>
+                    <TouchableOpacity
+                         onPress={() => navigation.navigate("/(tabs)/performance")}>
+                        <Text><Ionicons name='chevron-back' size={24} color={'blue'}/></Text>
+                        </TouchableOpacity>
                     <Text style={{fontWeight: 'bold'}}>Reviews</Text>
                 </View>
 
