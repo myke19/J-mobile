@@ -1,27 +1,35 @@
 import styles from "@/styles/main";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-//import { useSQLiteContext } from 'expo-sqlite';
-import { ScrollView, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Home() {
-     
-
-    const navigator = useRouter();
 
 
-    return (
-        <SafeAreaView style={{ backgroundColor: "blue"}}>
-        <ScrollView>
-            <View style={{flex: 1}}>
-                <View style={styles.ground}>
-                    
-                <Text style={{fontWeight: 'bold', color: '#fff'}}>Welcome!</Text>
-                <Text style={{color: '#fff'}}>Please, click on the above arrow<MaterialCommunityIcons name='hand-wave' size={25} color={'orange'}/></Text>
-            </View>
-            </View>
-        </ScrollView>
-        </SafeAreaView>
-    );
+export default function Hrflow() {
+   const navigation = useRouter();
+
+   const onboard = () => {
+    navigation.push("/onboard")
+   }
+
+
+
+   return (
+    <SafeAreaView style={{backgroundColor: '#fff', flex: 1, alignItems: 'center'}}>
+        <View style={{justifyContent: 'flex-start'}}>
+            <TouchableOpacity 
+            onPress={() => navigation.navigate("/onboard")}>
+            <Ionicons name='chevron-back' size={25} color={'blue'}/>
+            </TouchableOpacity>
+        </View>
+        <View>
+            <Image source={require("/assets/images/Hrflow1.jpeg")}
+            style={{width: 250, height: 250}}/>
+        </View>
+        <View style={styles.butt}>
+            <Text style={{color: 'blue', fontWeight: 'bold'}}>Work Better, Together</Text>
+        </View>
+    </SafeAreaView>
+   )
 }

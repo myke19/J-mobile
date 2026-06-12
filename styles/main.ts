@@ -409,7 +409,9 @@ const styles = StyleSheet.create(
             alignItems: 'center',
             justifyContent: 'center',
         },
-        
+        butt: {
+            alignItems: 'center',
+        }
         
    }
 )
